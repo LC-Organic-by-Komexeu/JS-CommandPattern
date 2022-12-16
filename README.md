@@ -1,3 +1,3 @@
-# JSToolkit
+# JS-CommandPattern
 
-整理實用JS功能
+實作命令模式
