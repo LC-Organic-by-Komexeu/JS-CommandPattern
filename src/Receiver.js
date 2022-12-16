@@ -26,7 +26,7 @@ export default class 點餐機 {
     開始做 () {
         return new Promise((resolve) => {
             setTimeout(() => {
-                resolve(this['訂單內容']);
+                resolve(this.訂單內容);
             }, 2000)
         })
     }

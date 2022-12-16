@@ -4,30 +4,22 @@ import 點餐機 from './Invoker.js'
 const 高檔點餐系統 = new 點餐系統()
 const 平板點餐機 = new 點餐機()
 
-平板點餐機.點餐(高檔點餐系統, {
-    指令: '品項',
-    內容: '紅茶'
-})
-平板點餐機.點餐(高檔點餐系統, {
-    指令: '容量',
-    內容: '大'
-})
-平板點餐機.點餐(高檔點餐系統, {
-    指令: '溫度',
-    內容: '冰'
-})
-平板點餐機.點餐(高檔點餐系統, {
-    指令: '糖量',
-    內容: '微'
-})
-平板點餐機.點餐(高檔點餐系統, {
-    指令: '冰量',
-    內容: '去'
-})
+document.addEventListener("DOMContentLoaded", () => {
+    document.querySelectorAll('.invoke').forEach((e) => {
+        e.addEventListener('change', (invoker) => {
+            const command = invoker.currentTarget.dataset.bind
+            const content = invoker.currentTarget.value
+            平板點餐機.點餐(高檔點餐系統, {
+                指令: command,
+                內容: content
+            })
+        })
+    });
 
-console.log('製作中請稍後...')
-
-const 做好的飲料 = await 平板點餐機.點完了快做(高檔點餐系統)
-
-console.log('得到飲料:')
-console.log(做好的飲料)
+    document.querySelector('.execute').addEventListener('click', async (e) => {
+        console.log('製作中請稍後...')
+        const 做好的飲料 = await 平板點餐機.點完了快做(高檔點餐系統)
+        console.log('得到飲料:')
+        console.log(做好的飲料)
+    });
+});
